@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:vmpa/Constant/color.dart';
 import 'package:vmpa/Models/song_model.dart';
 import 'package:vmpa/Services/db_services.dart';
 import 'package:vmpa/Services/player_service.dart';
@@ -26,18 +27,13 @@ class _ReccomendViewState extends State<ReccomendView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        centerTitle: true,
-        title: const Text(
-          'Recommendations',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-      ),
-      body: SlidableAutoCloseBehavior(
-        closeWhenOpened: true,
+          backgroundColor: AppColors.primary,
+          centerTitle: true,
+          title: Text('Recommendations', style: Theme.of(context).textTheme.headlineSmall)),
+      body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-            child: ListView(
+            child: Column(
               children: [
                 StreamBuilder<List<SongModel>>(
                   stream: DBServices().reccomendedList(),
@@ -50,7 +46,7 @@ class _ReccomendViewState extends State<ReccomendView> {
                     if (snapshot.hasData) {
                       return ListView.builder(
                         shrinkWrap: true,
-                        physics: const ScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: snapshot.requireData.length,
                         itemBuilder: (context, index) {
                           final data = snapshot.requireData[index];
@@ -63,7 +59,7 @@ class _ReccomendViewState extends State<ReccomendView> {
                                   onPressed: ((context) {
                                     DBServices().deleteSong(data.songId!);
                                   }),
-                                  backgroundColor: Colors.red,
+                                  backgroundColor: AppColors.error,
                                   label: 'Delete',
                                   icon: Icons.delete,
                                 ),

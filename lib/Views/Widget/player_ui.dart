@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:vmpa/Constant/color.dart';
 import 'package:vmpa/Services/player_common.dart';
 import 'package:vmpa/Utilities/global_variables.dart';
 import 'package:rxdart/rxdart.dart' as rx;
@@ -23,7 +24,7 @@ class PlayerUi extends StatelessWidget {
       alignment: Alignment.center,
       height: 120,
       margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(12)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -90,8 +91,8 @@ class ControlButtons extends StatelessWidget {
           final loopMode = snapshot.data ?? LoopMode.off;
           const icons = [
             Icon(Icons.repeat),
-            Icon(Icons.repeat, color: Colors.deepPurple),
-            Icon(Icons.repeat_one, color: Colors.deepPurple),
+            Icon(Icons.repeat, color: AppColors.primary),
+            Icon(Icons.repeat_one, color: AppColors.primary),
           ];
           const cycleModes = [
             LoopMode.off,
@@ -129,7 +130,7 @@ class ControlButtons extends StatelessWidget {
               child: Center(
                   heightFactor: 1,
                   widthFactor: 1,
-                  child: CircularProgressIndicator.adaptive(strokeWidth: 2, backgroundColor: Colors.deepPurple)),
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 2, backgroundColor: AppColors.primary)),
             );
           } else if (playing != true) {
             return IconButton(

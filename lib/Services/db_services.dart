@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vmpa/Models/song_model.dart';
 import 'package:vmpa/Utilities/global_variables.dart';
@@ -45,10 +43,7 @@ class DBServices {
     FirebaseFirestore fireStore = FirebaseFirestore.instance;
     return fireStore.collection('songs').snapshots().map((event) {
       List<SongModel> retVal = [];
-      log(event.docs.toString());
       for (var doc in event.docs) {
-        print('object');
-        log(doc.data().toString());
         retVal.add(SongModel.fromFirestore(doc));
       }
       return retVal;

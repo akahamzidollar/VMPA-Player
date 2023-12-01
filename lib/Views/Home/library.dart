@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
+import 'package:vmpa/Constant/color.dart';
 import 'package:vmpa/Models/song_model.dart';
 import 'package:vmpa/Services/player_service.dart';
 import 'package:vmpa/Utilities/global_variables.dart';
@@ -38,12 +39,7 @@ class _MusicLibraryState extends State<MusicLibrary> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  Stream<PositionData> get _positionDataStream => rx.Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+  Stream<PositionData> get positionDataStream => rx.Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
         player.positionStream,
         player.bufferedPositionStream,
         player.durationStream,
@@ -81,7 +77,7 @@ class _MusicLibraryState extends State<MusicLibrary> {
                               onPressed: ((context) {
                                 DBServices().deleteSong(data.songId!);
                               }),
-                              backgroundColor: Colors.red,
+                              backgroundColor: AppColors.error,
                               label: 'Delete',
                               icon: Icons.delete,
                             ),
@@ -89,7 +85,6 @@ class _MusicLibraryState extends State<MusicLibrary> {
                         ),
                         child: GestureDetector(
                           onTap: () async {
-                            // isAudioLoading.value = true;
                             final playlist = PlayerService().buildAudios([data]);
                             await PlayerService().buildPlayer(player, playlist, initialIndex: 0);
                           },

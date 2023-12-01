@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vmpa/Constant/color.dart';
 import 'package:vmpa/Controllers/search_song_controller.dart';
 import 'package:vmpa/Models/song_model.dart';
 import 'package:vmpa/Services/player_service.dart';
@@ -22,17 +23,22 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        centerTitle: false,
-        title: Hero(
-          tag: 'search',
-          child: CupertinoSearchTextField(
-              backgroundColor: Colors.white,
-              onChanged: (value) {
-                searchString.value = value;
-                searchDataController.filterSongs(value);
-              }),
-        ),
+        titleSpacing: 0.0,
+        backgroundColor: AppColors.primary,
+        iconTheme: const IconThemeData(color: AppColors.white),
+        toolbarHeight: 65,
+        title: TextFormField(
+            decoration: const InputDecoration(
+                hintText: 'Search',
+                hintStyle: TextStyle(color: AppColors.primary),
+                border: InputBorder.none,
+                filled: true,
+                fillColor: AppColors.white,
+                prefixIcon: Icon(Icons.search, color: AppColors.primary)),
+            onChanged: (value) {
+              searchString.value = value;
+              searchDataController.filterSongs(value);
+            }),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

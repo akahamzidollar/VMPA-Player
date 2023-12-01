@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vmpa/Constant/color.dart';
 import 'package:vmpa/Views/Landing/landing.dart';
 
 class ApplicationTour extends StatefulWidget {
@@ -34,7 +35,7 @@ class ApplicationTourState extends State<ApplicationTour> {
     bool carouselShown = prefs.getBool('carouselShown') ?? false;
 
     if (carouselShown) {
-      Get.offAll(const LandingView());
+      Get.offAll(() => const LandingView());
     } else {
       prefs.setBool('carouselShown', true);
     }
@@ -42,7 +43,7 @@ class ApplicationTourState extends State<ApplicationTour> {
 
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAll(const LandingView());
+      Get.offAll(() => const LandingView());
     });
   }
 
@@ -91,7 +92,7 @@ class ApplicationTourState extends State<ApplicationTour> {
                       margin: const EdgeInsets.symmetric(horizontal: 4.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: currentIndex == index ? Colors.blue : Colors.grey,
+                        color: currentIndex == index ? AppColors.blue : AppColors.grey,
                       ),
                     );
                   }).toList(),

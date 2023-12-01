@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vmpa/Constant/color.dart';
 import 'package:vmpa/Views/Home/home.dart';
 import 'package:vmpa/Views/Recommend/recommand.dart';
 import 'package:vmpa/Views/Upload/upload_page.dart';
@@ -28,15 +29,17 @@ class _LandingViewState extends State<LandingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.black,
       body: screens.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.deepPurple,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey.shade400,
+        backgroundColor: AppColors.primary,
+        selectedItemColor: AppColors.white,
+        unselectedItemColor: AppColors.white54,
         currentIndex: selectedIndex,
         onTap: onItemTapped,
+        selectedLabelStyle: Theme.of(context).textTheme.titleSmall,
+        unselectedLabelStyle: Theme.of(context).textTheme.titleSmall,
         elevation: 1.5,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_filled, size: 30), label: 'Home'),

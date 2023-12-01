@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vmpa/Constant/theme.dart';
 import 'package:vmpa/Views/SplashScreen/splash_screen.dart';
 import 'firebase_options.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      theme: AppTheme.lightTheme(context),
       home: const SplashScreen(),
     );
   }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1054311131592",
+    "project_id": "vmpa-4ef89",
+    "storage_bucket": "vmpa-4ef89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054311131592:android:a2ce2f62454bbc47f638fd",
+        "android_client_info": {
+          "package_name": "com.example.vmpa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGIO111B1Uto4iIu56BzM3ZvfF0HLgJ08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
